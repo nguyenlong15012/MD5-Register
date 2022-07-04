@@ -25,7 +25,7 @@ export class CustomvalidationService {
       // const regex = new RegExp('^[\\+]?[(]?[0-9]{3}[)]?[-\\s\\.]?[0-9]{3}[-\\s\\.]?[0-9]{4,6}$');
       const regex = new RegExp('^\\+84\\d{9,10}$');
       const valid = regex.test(control.value);
-      return valid ? null : { invalidPassword: true };
+      return valid ? null : { invalidPhone: true };
     };
   }
 

@@ -13,6 +13,8 @@ export class ReactiveFormComponent implements OnInit {
   registerForm: FormGroup;
   submitted = false;
 
+  //@ts-ignore
+  countryDefault: "VIETNAMESE"
   countries: Countries[] = [
     {id: 1,
       name: 'VIETNAMESE'},
@@ -35,7 +37,7 @@ export class ReactiveFormComponent implements OnInit {
         password: ['', Validators.compose([Validators.required, this.customValidator.patternValidator()])],
         confirmPassword: ['',Validators.required],
         country: ['', Validators.required],
-        age: ['', [Validators.required, Validators.minLength(18)]],
+        age: ['', [Validators.required, Validators.min(18)]],
         gender: ['', Validators.required],
         phone: ['', Validators.compose([Validators.required, this.customValidator.patternValidatorPhone()])],
 

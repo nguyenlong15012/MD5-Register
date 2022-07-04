@@ -67,11 +67,40 @@
             <div class="form-group">
               <label for="country">Country </label>
               <br>
-              <span class="text-danger">
-                <select id="country" formControlName="country" >
-                <option *ngFor="let c of countries" value="{{c.name}}">{{c.name}}</option>
-              </select>
-              </span>
+                <select id="country" formControlName="country">
+                  <option *ngFor="let c of countries" value="{{c.name}}" ngValue="{{countryDefault}}">{{c.name}}</option>
+                </select>
+            </div>
+            <div class="form-group">
+              <label>Phone</label>
+              <input type="text" class="form-control" formControlName="phone">
+              <span class="text-danger"
+                    *ngIf="(registerFormControl['phone'].touched || submitted) && registerFormControl['phone'].errors?.['required']">
+                                Phone is required
+                            </span>
+              <span class="text-danger"
+                    *ngIf="registerFormControl['phone'].touched && registerFormControl['phone'].errors?.['invalidPhone']">
+                                Enter a valid Phone number
+                            </span>
+            </div>
+            <div class="form-group">
+              <label>Age</label>
+              <input type="text" class="form-control" formControlName="age" style="width: 140px" placeholder="18+" >
+              <span class="text-danger"
+                    *ngIf="(registerFormControl['age'].touched || submitted) && registerFormControl['age'].errors?.['required']">
+                                Age is required
+                            </span>
+              <span class="text-danger"
+                    *ngIf="registerFormControl['age'].touched && registerFormControl['age'].errors?.['min']">
+                                The youngest is 18 years old
+                            </span>
+            </div>
+            <div class="form-group">
+              <label>Gender</label>
+              <input type="radio"  id="gender" formControlName="gender" value="male">
+              <label for="gender">Male</label>
+              <input type="radio" id="female" formControlName="gender" value="female">
+              <label for="female">Female</label>
             </div>
             <div class="form-group">
               <button type="submit" class="btn btn-success">Register</button>
